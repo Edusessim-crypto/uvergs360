@@ -209,10 +209,10 @@ export function RSMap({ map, fills, selectedId, focusIds, dimOutsideFocus = true
               y={l.y}
               textAnchor="middle"
               className="font-display"
-              style={{ fontSize: 15 / transform.k, fontWeight: 700, letterSpacing: "0.02em", paintOrder: "stroke" }}
+              style={{ fontSize: 21 / transform.k, fontWeight: 700, letterSpacing: "0.02em", paintOrder: "stroke" }}
               fill="#041a4f"
               stroke="rgba(255,255,255,0.85)"
-              strokeWidth={4 / transform.k}
+              strokeWidth={6 / transform.k}
             >
               {l.text}
             </text>

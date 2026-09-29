@@ -19,6 +19,7 @@ import {
   User,
   Globe,
 } from "lucide-react"
+import { toast } from "sonner"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {
@@ -171,7 +172,7 @@ function UserMenu() {
           <Presentation /> Iniciar apresentação
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem variant="destructive" onSelect={() => router.push("/login")}>
+        <DropdownMenuItem variant="destructive" onSelect={() => toast.info("Sessão de demonstração", { description: "O login real será habilitado na Etapa 2." })}>
           <LogOut /> Sair
         </DropdownMenuItem>
       </DropdownMenuContent>

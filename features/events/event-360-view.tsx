@@ -30,17 +30,6 @@ import { AnimatedNumber } from "@/components/shared/animated-number"
 import { ChartTooltip, GRID, SERIES, SEQUENTIAL, axisProps, BarList } from "@/components/charts/chart-kit"
 import { useBreadcrumbLabel } from "@/components/layout/shell-context"
 
-function Kpi({ label, value, sub, children }: { label: string; value: React.ReactNode; sub?: React.ReactNode; children?: React.ReactNode }) {
-  return (
-    <div className="px-5 py-4">
-      <div className="text-[12px] font-medium text-ink-3">{label}</div>
-      <div className="mt-1 font-display text-[26px] leading-none font-semibold tracking-[-0.025em] text-ink tnum">{value}</div>
-      {sub && <div className="mt-1.5 text-xs text-ink-3">{sub}</div>}
-      {children}
-    </div>
-  )
-}
-
 export function Event360View({ id }: { id: string }) {
   const router = useRouter()
   const dash = useQuery({ queryKey: qk.eventDashboard(id), queryFn: () => eventService.getDashboard(id) })
@@ -71,7 +60,7 @@ export function Event360View({ id }: { id: string }) {
                 <StatusBadge domain="event" value={e.status} size="sm" className={cn(e.status === "inscricoes_abertas" && "bg-success-500/15 text-[#5fe39a]", closed && "bg-white/10 text-white/70", live && "bg-brand-500/25 text-white")} />
                 <span className="text-[12.5px] text-white/55">{e.type} · {e.format}</span>
               </div>
-              <h1 className="mt-2 font-display text-[28px] leading-tight font-semibold tracking-[-0.025em] sm:text-[32px]">{e.title}</h1>
+              <h1 className="mt-2 font-display text-[28px] text-white leading-tight font-semibold tracking-[-0.025em] sm:text-[32px]">{e.title}</h1>
               <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-1 text-[13.5px] text-white/70">
                 <span className="inline-flex items-center gap-1.5"><CalendarDays className="size-4" />{formatDateRange(e.startDate, e.endDate)}</span>
                 <span className="inline-flex items-center gap-1.5"><MapPin className="size-4" />{e.city === "Online" ? e.venue : `${e.venue} · ${e.city}`}</span>
@@ -118,7 +107,7 @@ export function Event360View({ id }: { id: string }) {
                 {funnel.map((step, i) => {
                   const top = funnel[0].value ?? 1
                   const prev = i > 0 ? funnel[i - 1].value : null
-                  const w = step.value === null ? 100 : Math.max(8, (step.value / top) * 100)
+                  const w = step.value === null ? 100 : 22 + 78 * Math.sqrt(step.value / top)
                   const conv = step.value !== null && prev ? Math.round((step.value / prev) * 100) : null
                   return (
                     <div key={step.label} className="flex items-center gap-4">

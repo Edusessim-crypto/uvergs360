@@ -1,17 +1,15 @@
 import Link from "next/link"
-import { Hammer } from "lucide-react"
+import { Compass } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { EmptyState } from "@/components/shared/states"
 
-export default async function ModulePlaceholder({ params }: { params: Promise<{ slug: string[] }> }) {
-  const { slug } = await params
-  const name = slug[0].replace(/-/g, " ")
+export default function NotFoundInShell() {
   return (
     <div className="card">
       <EmptyState
-        icon={Hammer}
-        title={`Módulo “${name.charAt(0).toUpperCase() + name.slice(1)}” em finalização`}
-        description="Esta área faz parte da Etapa 1 e está sendo concluída. Os dados e serviços já estão prontos na plataforma."
+        icon={Compass}
+        title="Página não encontrada"
+        description="O endereço acessado não existe ou foi movido. Use o menu lateral ou a busca (⌘K) para navegar."
         action={
           <Button asChild>
             <Link href="/">Voltar à Visão Geral</Link>

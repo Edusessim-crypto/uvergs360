@@ -24,7 +24,21 @@ As chaves de cache estão em `lib/query-keys.ts` (React Query).
 | Relatórios / exportação | `reportService.export` (feedback visual) | Geração assíncrona PDF/XLSX |
 | Integrações | Cards "Não configurado" | Cofre de credenciais por provedor |
 
-## Estado da Etapa 1
-- **Pronto:** design system, dados simulados coerentes, todos os serviços, shell (sidebar, topbar, ⌘K, notificações) e Dashboard.
-- **Pendente:** Radar, Perfil 360º, Território, Evento 360, listas (Vereadores, Câmaras, Eventos, Inscrições, Certificados), wizards, Check-in, Campanhas/Jornadas/Segmentos, portais e landing.
-  Rotas sem tela exibem "Módulo em finalização" (`app/(admin)/[...slug]`).
+## Estado da Etapa 1 (concluída)
+
+Front-end demonstrável com navegação completa e dados simulados:
+
+- **Telas hero:** Dashboard, Radar UVERGS, Perfil 360º, Território RS (malha real IBGE com drill-down Estado → Região → Município → Câmara → Vereadores) e Evento 360.
+- **Relacionamento:** Vereadores (filtros, ordenação, seleção em lote, cadastro/edição em drawer), Câmaras e Perfil da Câmara, Segmentos (construtor de regras com estimativa), Atividades.
+- **Comunicação:** Campanhas (wizard de 6 etapas com preview desktop/mobile/WhatsApp), Jornadas (fluxo visual).
+- **Eventos:** lista, wizard de 7 etapas, Inscrições, Check-in simulado, Certificados (modal institucional com QR), Avaliações/NPS.
+- **Gestão e administração:** Metas & Impacto, Relatórios (visualizar/exportar), Usuários, Integrações, Auditoria, Configurações, Notificações.
+- **Área externa:** Meu UVERGS (mobile-first, credencial digital), Portal da Câmara, landing pública do evento e inscrição pública com credencial.
+
+Todas as mutações (novo vereador, check-in, campanha, inscrição pública, tarefas, interações) ficam em memória até recarregar a página.
+
+## Pontos de atenção para a Etapa 2
+- Autenticação: não há tela de login na demonstração; o usuário "Ricardo Martins" é fixo (`sessionService`).
+- Listas grandes (4.812 vereadores) são filtradas no cliente — mover filtros/paginação para a API.
+- Datas dos dados simulados são relativas ao dia atual (`data/mock/_clock.ts`).
+- Logo provisório em `components/brand/logo.tsx` — substituir pelo arquivo oficial da UVERGS.

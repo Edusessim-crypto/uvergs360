@@ -42,10 +42,10 @@ export function ProfileHeader({
         </div>
       )}
       <div className="relative px-5 pb-5 sm:px-7">
-        <div className={cn("flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between", band && "-mt-10 sm:-mt-12")}>
-          <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-end">
-            {avatar}
-            <div className="min-w-0 pb-0.5">
+        <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
+          <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-start">
+            {avatar && <div className={cn("shrink-0", band && "-mt-10 sm:-mt-12")}>{avatar}</div>}
+            <div className="min-w-0 pt-4">
               {eyebrow && <div className="mb-1.5 flex flex-wrap items-center gap-2">{eyebrow}</div>}
               <h1 className="font-display text-[26px] leading-tight font-semibold tracking-[-0.025em] text-ink sm:text-[30px]">{title}</h1>
               {subtitle && <div className="mt-1 text-[14px] text-ink-2">{subtitle}</div>}
@@ -53,7 +53,7 @@ export function ProfileHeader({
               {tags && <div className="mt-3 flex flex-wrap items-center gap-2">{tags}</div>}
             </div>
           </div>
-          {actions && <div className="flex flex-wrap items-center gap-2 xl:pb-1">{actions}</div>}
+          {actions && <div className="flex flex-wrap items-center gap-2 xl:justify-end xl:pt-5">{actions}</div>}
         </div>
       </div>
       {stats && stats.length > 0 && (
